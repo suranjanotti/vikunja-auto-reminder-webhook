@@ -1,0 +1,13 @@
+services:
+  webhook-listener:
+    build:
+      context: .  # Assuming Dockerfile and source are in the same directory
+      dockerfile: Dockerfile
+    container_name: vikunja-webhook
+    environment:
+      VIKUNJA_API: https://your-vikunja-instance.example.com/api/v1
+      VIKUNJA_USERNAME: your-username
+      VIKUNJA_PASSWORD: your-password  # 🔁 Set securely (consider .env or secrets)
+    ports:
+      - 8025:8000    #Set 8025 port to one available on your system.
+    restart: unless-stopped
